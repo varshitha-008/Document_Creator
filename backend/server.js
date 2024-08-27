@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const http = require('http');
 const { Server } = require('socket.io');
 const { setupDocumentSockets } = require('./sockets/documentSocket');
+// const { setupDocumentSockets } = require('./sockets/documentSocket');
 // const { setupDocumentSockets } = require('./sockets/documentSockets'); // Add this
 // const setupDocumentSockets =require
 dotenv.config();
@@ -28,6 +29,7 @@ app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/documents', require('./routes/documentRoutes'));
 
 // Setup the WebSockets for document collaboration
+// setupDocumentSockets(io);
 // setupDocumentSockets(io);
 setupDocumentSockets(io);
 

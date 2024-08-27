@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require("mongoose");
 
 const documentSchema = new mongoose.Schema({
   name: { type: String, required: true },
   content: { type: String, default: '' },
-  createdBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },  
+  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  collaborators: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Collaborator' }],
   history: [
     {
       version: { type: Number, required: true },
@@ -15,4 +15,4 @@ const documentSchema = new mongoose.Schema({
   lastModified: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('Document', documentSchema);
+module.exports = mongoose.model("Document", documentSchema);

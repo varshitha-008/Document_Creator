@@ -7,7 +7,7 @@ exports.register = async (req, res) => {
   try {
     const user = new User({ username, email, password });
     await user.save();
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    // const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
     res.json({ token });
   } catch (error) {
     res.status(400).json({ error: 'Error creating user' });

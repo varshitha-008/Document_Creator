@@ -7,9 +7,12 @@ const {
   deleteDocument,
   getDocument,
   getDocumentHistory,
-  revertDocumentVersion,
+  // revertDocumentVersion,
   addComment,
   getComments,
+  updateDocumentContent,
+  getDocumentCollaborators,
+  revertDocumentVersion,
 } = require('../controllers/documentController');
 const authMiddleware = require('../middleware/authMiddleware');
 
@@ -27,5 +30,13 @@ router.post('/:id/revert', authMiddleware, revertDocumentVersion);
 // Comment Routes
 router.post('/:id/comments', authMiddleware, addComment);
 router.get('/:id/comments', authMiddleware, getComments);
+
+
+router.put('/:id/save', authMiddleware, updateDocumentContent);
+
+
+router.get('/:id/collaborators', authMiddleware, getDocumentCollaborators);
+
+
 
 module.exports = router;
